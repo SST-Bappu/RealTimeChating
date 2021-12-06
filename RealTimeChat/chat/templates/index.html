@@ -158,6 +158,13 @@ input[type=text], select {
       color: white;
       border-radius: 2px;
     }
+
+    #alert{
+			background-color: #333333;
+			color: rgb(240, 178, 9);
+			padding: 10px;
+			margin-top: 10px;
+		}
     </style>
   </head>
   <body>
@@ -244,10 +251,7 @@ input[type=text], select {
 <g>
 </g>
 </svg>
-          <a class="navbar-brand" href="#">DesphixsChat</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -271,26 +275,24 @@ input[type=text], select {
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Logout</a>
               </li>
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn " type="submit">Search</button>
-            </form>
           </div>
         </div>
       </nav>
       <div class="container">
 
-        <form id="post-form" method="POST" action="checkview">
+        <form id="post-form" method="POST" action="room">
           {% csrf_token %}
-            <label id="room_name_top">Room Name</label>
-            <textarea id="input1" class="form-control" aria-label="With textarea" type="text" name="room_name" id="room_name" style="margin-top: 10px;"></textarea>
             <label id="username_top">Username</label>
             <textarea id="input2" class="form-control" aria-label="With textarea" type="text" name="username" id="username" style="margin-top: 10px;"></textarea>
+            {%if messages%}
+              {%for message in messages%}
+                <p id='alert'><strong>{{message}}</strong></p>
+              {%endfor%}
+            {%endif%}
             <input type="submit" value="Start Chat Now!">
         </form>
     </div>
-    <h5 >&copy;	Copyright Reserved Desphixs - 2021</h5>
-<h6>Made by Destiny Franks &hearts;	</h6>
+
 
 
 
